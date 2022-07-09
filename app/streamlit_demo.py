@@ -398,6 +398,9 @@ def main():
 
         mov_base = get_mov_base()
         mov_base_by_title = {v: k for k, v in mov_base.items()}
+        
+        user = st.selectbox('Choose a user', ('userA', 'userB'))
+        
         movies_chosen = st.multiselect('Choose 10 movies', list(mov_base.values()))
         st.markdown('**{} chosen {} to go**'.format(len(movies_chosen), 10 - len(movies_chosen)))
 
