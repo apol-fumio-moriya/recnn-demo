@@ -418,8 +418,8 @@ def main():
 
         if len(movies_chosen) == 10:
             st.markdown('### Rate each movie from 1 to 10')
-            ratings += dict([(i, st.number_input(i, min_value=1, max_value=10, value=5)) for i in movies_chosen])
-            # st.write('for debug your ratings are:', ratings)
+            ratings.update(dict([(i, st.number_input(i, min_value=1, max_value=10, value=5)) for i in movies_chosen]))
+            st.write('for debug your ratings are:', ratings)
 
 
             ids = [mov_base_by_title[i] for i in movies_chosen]
