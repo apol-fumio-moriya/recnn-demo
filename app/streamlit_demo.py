@@ -409,14 +409,16 @@ def main():
         movies_chosen = st.multiselect('Choose 7 movies', list(mov_base.values()))
         st.markdown('**{} chosen {} to go**'.format(len(movies_chosen), 7 - len(movies_chosen)))
 
-        if len(movies_chosen) > 7:
+        st.write('movies chosen', movies_chosen)
+        
+        if len(movies_chosen) > 10:
             st.error('Please select exactly 7 movies, you have selected {}'.format(len(movies_chosen)))
-        if len(movies_chosen) == 7:
+        if len(movies_chosen) == 10:
             st.success("You have selected 7 movies. Now let's rate them")
         else:
             st.info('Please select 7 movies in the input above')
 
-        if len(movies_chosen) == 7:
+        if len(movies_chosen) == 10:
             st.markdown('### Rate each movie from 1 to 10')
             ratings.update(dict([(i, st.number_input(i, min_value=1, max_value=10, value=5)) for i in movies_chosen]))
             st.write('for debug your ratings are:', ratings)
