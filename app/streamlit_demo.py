@@ -428,7 +428,7 @@ def main():
             # st.write('Movie indexes', list(ids))
             embs = load_mekd()
             state = torch.cat([torch.cat([embs[i] for i in ids]), torch.tensor(list(ratings.values())).float() - 5])
-            st.write('your state', state)
+            #st.write('your state', state)
             state = state.to(device).squeeze(0)
 
             models = load_models(device)
