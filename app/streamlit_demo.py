@@ -390,7 +390,7 @@ def main():
         st.markdown("""
         **Now, this is probably why you came here. Let's get you some movies suggested**
         
-        You need to choose 10 movies in the bar below by typing their titles.
+        You need to choose 7 movies in the bar below by typing their titles.
         Due to the client side limitations, I am only able to display top 200 movies.
         P.S. you can type to search
         """)
@@ -406,8 +406,8 @@ def main():
             s = '{"Toy Story":1,"Jumanji":1,"Sabrina":1}'
             ratings = json.loads(s)
         
-        movies_chosen = st.multiselect('Choose 10 movies', list(mov_base.values()))
-        st.markdown('**{} chosen {} to go**'.format(len(movies_chosen), 10 - len(movies_chosen)))
+        movies_chosen = st.multiselect('Choose 7 movies', list(mov_base.values()))
+        st.markdown('**{} chosen {} to go**'.format(len(movies_chosen), 7 - len(movies_chosen)))
 
         if len(movies_chosen) > 10:
             st.error('Please select exactly 10 movies, you have selected {}'.format(len(movies_chosen)))
