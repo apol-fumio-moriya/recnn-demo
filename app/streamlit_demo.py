@@ -409,7 +409,7 @@ def main():
         movies_chosen = st.multiselect('Choose 7 movies', list(mov_base.values()))
         st.markdown('**{} chosen {} to go**'.format(len(movies_chosen), 7 - len(movies_chosen)))
 
-        movies_chosen.append("Toy Story","Jumanji","Sabrina") 
+        movies_chosen..extend(["Toy Story","Jumanji","Sabrina"]) 
         
         if len(movies_chosen) > 10:
             st.error('Please select exactly 7 movies, you have selected {}'.format(len(movies_chosen)))
