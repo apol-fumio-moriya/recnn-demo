@@ -399,17 +399,11 @@ def main():
         mov_base_by_title = {v: k for k, v in mov_base.items()}
         
         user = st.selectbox('Choose a user', ('user A', 'user B'))
-        #if user == "user A":
-        #    s = '{"Toy Story":10,"Jumanji":10,"Sabrina":10}'
-        #    base_ratings = json.loads(s)
-        #elif user == "user B":
-        #    s = '{"Toy Story":1,"Jumanji":1,"Sabrina":1}'
-        #    base_ratings = json.loads(s)
         
         movies_chosen = st.multiselect('Choose 7 movies', list(mov_base.values()))
         st.markdown('**{} chosen {} to go**'.format(len(movies_chosen), 7 - len(movies_chosen)))
 
-        #movies_chosen.extend(["Toy Story","Jumanji","Sabrina"]) 
+        movies_chosen.extend(["Heat","Jumanji","Sabrina"]) 
         
         if len(movies_chosen) > 10:
             st.error('Please select exactly 7 movies, you have selected {}'.format(len(movies_chosen)))
@@ -422,10 +416,10 @@ def main():
             st.markdown('### Rate each movie from 1 to 10')
             ratings = dict([(i, st.number_input(i, min_value=1, max_value=10, value=5)) for i in movies_chosen])
             
-            #if user == "user A":
-            #    ratings.update('Toy Story'=10, 'Jumanji'=10, 'Sabrina'=10)
-            #elif user == "user B":
-            #    ratings.update('Toy Story'=1, 'Jumanji'=1, 'Sabrina'=1)
+            if user == "user A":
+                ratings.update(Heat=10, Jumanji=10, Sabrina=10)
+            elif user == "user B":
+                ratings.update(Heat=1, Jumanji=1, Sabrina=1)
             
             st.write('for debug your ratings are:', ratings)
             
