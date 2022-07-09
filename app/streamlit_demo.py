@@ -108,7 +108,7 @@ def render_header():
     """)
 
 
-@st.cache
+#@st.cache
 def load_mekd():
     return pickle.load(open(DATAPATH + 'mekd.pkl', 'rb'))
 
@@ -158,7 +158,7 @@ def get_mov_base():
 
     for i, k in list(meta.items()):
         tmdid = int(meta[i]['tmdbId'])
-        if tmdid > 0 and popular['id'].isin([i]).any():
+        if tmdid > 0:
             movieid = pd.to_numeric(links.loc[tmdid]['movieId'])
             if isinstance(movieid, pd.Series):
                 continue
@@ -391,27 +391,27 @@ def main():
         st.markdown("""
         **Now, this is probably why you came here. Let's get you some movies suggested**
         
-        You need to choose 10 movies in the bar below by typing their titles.
+        You need to choose 3 movies in the bar below by typing their titles.
         Due to the client side limitations, I am only able to display top 200 movies.
         P.S. you can type to search
         """)
 
         mov_base = get_mov_base()
         mov_base_by_title = {v: k for k, v in mov_base.items()}
-        movies_chosen = st.multiselect('Choose 10 movies', list(mov_base.values()))
+        movies_chosen = st.multiselect('Choose 3 movies', list(mov_base.values()))
         st.markdown('**{} chosen {} to go**'.format(len(movies_chosen), 10 - len(movies_chosen)))
 
-        if len(movies_chosen) > 10:
-            st.error('Please select exactly 10 movies, you have selected {}'.format(len(movies_chosen)))
-        if len(movies_chosen) == 10:
-            st.success("You have selected 10 movies. Now let's rate them")
+        if len(movies_chosen) > 3:
+            st.error('Please select exactly 3 movies, you have selected {}'.format(len(movies_chosen)))
+        if len(movies_chosen) == 3:
+            st.success("You have selected 3 movies. Now let's rate them")
         else:
-            st.info('Please select 10 movies in the input above')
+            st.info('Please select 3 movies in the input above')
 
-        if len(movies_chosen) == 10:
-            st.markdown('### Rate each movie from 1 to 10')
+        if len(movies_chosen) == 3:
+            st.markdown('### Rate each movie from 1 to 3')
             ratings = dict([(i, st.number_input(i, min_value=1, max_value=10, value=5)) for i in movies_chosen])
-            # st.write('for debug your ratings are:', ratings)
+            st.write('for debug your ratings are:', ratings)
 
 
             ids = [mov_base_by_title[i] for i in movies_chosen]
