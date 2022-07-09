@@ -212,7 +212,7 @@ def load_reinforce():
 
 
 def main():
-    st.sidebar.header('📰 recnn by @awarebayes 👨‍🔧')
+    #st.sidebar.header('📰 recnn by @awarebayes 👨‍🔧')
 
     if st.sidebar.checkbox('Use cuda', torch.cuda.is_available()):
         device = torch.device('cpu')
@@ -220,19 +220,18 @@ def main():
         device = torch.device('cpu')
 
     st.sidebar.subheader('Choose a page to proceed:')
-    page = st.sidebar.selectbox("", ["🚀 Get Started", "📽 ️Recommend me a movie", "🔨 Test Recommendation",
-                                     "⛏️ Test Diversity", "🤖 Reinforce Top K"])
+    page = st.sidebar.selectbox("", ["📽 ️Recommend me a movie"])
 
-    st.sidebar.markdown("""
-    ### I need your help!
-    Currently, I am at my final year of high school, doing all this to get into a university.
-    I live in Russia and believe that I have no future here.
+    #st.sidebar.markdown("""
+    #### I need your help!
+    #Currently, I am at my final year of high school, doing all this to get into a university.
+    #I live in Russia and believe that I have no future here.
     
-    If you happened to know a prof/teacher/postdoc/anyone at your 
-    university, please show them my CV: [link](https://drive.google.com/file/d/1jgM-SzEUbUjqgHzaajoUv4ENhC7-oaDT/view?usp=sharing).
+    #If you happened to know a prof/teacher/postdoc/anyone at your 
+    #university, please show them my CV: [link](https://drive.google.com/file/d/1jgM-SzEUbUjqgHzaajoUv4ENhC7-oaDT/view?usp=sharing).
     
-    **I promise that I will make this library even better if I get a college degree!**
-    """)
+    #**I promise that I will make this library even better if I get a college degree!**
+    #""")
 
     if page == "🚀 Get Started":
         render_header()
