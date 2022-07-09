@@ -418,8 +418,9 @@ def main():
                 ratings.update(Heat=10, Jumanji=10, Sabrina=10)
             elif user == "user B":
                 ratings.update(Heat=1, Jumanji=1, Sabrina=1)
+            movies_chosen.extend(['Heat', 'Jumanji', 'Sabrina'])
             
-            st.write('for debug your ratings are:', ratings)
+            #st.write('for debug your ratings are:', ratings)
             
             ids = [mov_base_by_title[i] for i in movies_chosen]
             # st.write('Movie indexes', list(ids))
